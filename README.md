@@ -25,3 +25,7 @@ To use the command interpreter:
 1. Run the console: `./console.py`
 2. Enter commands to manage AirBnB objects.
 3. Enjoy exploring and interacting with the objects!
+
+## Author
+
+- [Khalilu Rahman Mohammed](https://github.com/krmohammed)
