@@ -22,7 +22,7 @@ class FileStorage:
         Returns:
             the private attribute __objects
         """
-        return self.__class__.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """
