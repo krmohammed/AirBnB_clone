@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 from models import storage
 
+
 class BaseModel:
     """
     The BaseModel class
@@ -34,7 +35,6 @@ class BaseModel:
             self.updated_at = datetime.now()
             storage.new(self)
 
-
     def save(self):
         """
         updates the public instance attribute updated_at
@@ -43,7 +43,6 @@ class BaseModel:
         """
         self.updated_at = datetime.now()
         storage.save()
-
 
     def to_dict(self):
         """
@@ -58,7 +57,6 @@ class BaseModel:
         dict_copy["created_at"] = self.created_at.isoformat()
         dict_copy["updated_at"] = self.updated_at.isoformat()
         return dict_copy
-
 
     def __str__(self):
         """informal string representation of `self
