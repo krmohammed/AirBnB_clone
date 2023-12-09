@@ -66,7 +66,6 @@ class FileStorage:
                     instance = eval(class_name)(**v)
                     FileStorage.__objects[k] = instance
 
-
     def destroy(self, obj_key):
         """
         deletes an instance by key
