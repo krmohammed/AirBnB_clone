@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+console module
+"""
 import cmd
 import re
 from models.base_model import BaseModel
@@ -12,7 +15,14 @@ from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
-    """ """
+    """
+    AirBnB Console
+    Create a new object (ex: a new User or a new Place)
+    Retrieve an object from a file, a database etc…
+    Do operations on objects (count, compute stats, etc…)
+    Updates attributes of an object
+    Destroys an object
+    """
 
     prompt = "(hbnb) "
     __my_models = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
@@ -22,14 +32,18 @@ class HBNBCommand(cmd.Cmd):
     __no_id = "** instance id missing **"
 
     def do_quit(self, line):
-        """exit the cmd"""
+        """exit the cmd
+        """
         return True
 
     def do_EOF(self, line):
-        """same as quit, exit"""
+        """same as quit, exit
+        """
         return True
 
     def emptyline(self):
+        """overrides the emptyline method
+        """
         pass
 
     def do_create(self, line):
@@ -160,7 +174,7 @@ class HBNBCommand(cmd.Cmd):
             print(self.__missing_class_name)
 
     def precmd(self, line):
-        """
+        """overrides the precmd method
         """
         comm = re.match(r'(.+)\.(.+)\(([^)]*)\)', line)
         if comm is not None:
