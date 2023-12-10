@@ -32,17 +32,20 @@ class HBNBCommand(cmd.Cmd):
     __no_id = "** instance id missing **"
 
     def do_quit(self, line):
-        """exit the cmd
+        """
+        exit the cmd
         """
         return True
 
     def do_EOF(self, line):
-        """same as quit, exit
+        """
+        same as quit, exit
         """
         return True
 
     def emptyline(self):
-        """overrides the emptyline method
+        """
+        overrides the emptyline method
         """
         pass
 
@@ -161,9 +164,9 @@ class HBNBCommand(cmd.Cmd):
                 obj = classes[key]
                 inst = obj
                 try:
-                    val = eval(lines[3])
+                    val = eval(str(lines[3]))
                     try:
-                        val = eval(val)
+                        val = eval(str(val))
                     except:
                         pass
                     setattr(inst, lines[2], val)
@@ -174,9 +177,10 @@ class HBNBCommand(cmd.Cmd):
             print(self.__missing_class_name)
 
     def precmd(self, line):
-        """overrides the precmd method
         """
-        comm = re.match(r'(.+)\.(.+)\(([^)]*)\)', line)
+        overrides the precmd method
+        """
+        comm = re.match(r"(.+)\.(.+)\(([^)]*)\)", line)
         if comm is not None:
             comms = list(comm.groups())
         else:
@@ -191,7 +195,7 @@ class HBNBCommand(cmd.Cmd):
             if a[0]:
                 b = [eval(i) for i in a]
             else:
-                b = ['']
+                b = [""]
             return " ".join([comms[1], comms[0]] + b)
         return line
 
