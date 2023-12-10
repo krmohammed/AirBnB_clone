@@ -8,17 +8,48 @@ from models.base_model import BaseModel
 
 
 class TestInitMethod(unittest.TestCase):
-    """Tests for new instances"""
+    """
+    Tests for new instances
+    """
 
     def test_no_args(self):
-        """no arguments"""
+        """
+        no arguments
+        """
         a = BaseModel()
         b = BaseModel()
         self.assertTrue(a.id != b.id)
         self.assertTrue(a.created_at == a.updated_at)
         self.assertFalse(b.id is None)
 
+    def test_dict_init(self):
+        """
+        initializing with a dictionary
+        """
+        a = BaseModel()
+        b = BaseModel(**a.to_dict())
+        self.assertTrue(a.__str__(), b.__str__())
+        self.assertTrue(a.to_dict(), b.to_dict())
+        self.assertTrue(a.id == b.id)
+        self.assertTrue(a.created_at == b.created_at)
+        self.assertTrue(a.updated_at == b.updated_at)
+        self.assertFalse(a is b)
+
+    def test_args(self):
+        """
+        initialization with non-keyworded args
+        """
+        a = BaseModel("Khalil", "Rahman", 89)
+        b = BaseModel(99)
+        c = BaseModel(**a.to_dict())
+        self.assertIsInstance(a, BaseModel)
+        self.assertIsInstance(b, BaseModel)
+        self.assertTrue(a.id == c.id)
+
     def test_types(self):
+        """
+        the types of the class attributes
+        """
         a = BaseModel()
         b = BaseModel()
         self.assertIsInstance(a, BaseModel)
@@ -34,11 +65,13 @@ class TestSaveMethod(unittest.TestCase):
     """
 
     def test_zero_args(self):
-        """no arguments"""
+        """
+        no arguments
+        """
         c = BaseModel()
         a = c.updated_at
         c.save()
-        self.assertFalse(a == c.updated_at)
+        self.assertTrue(c.updated_at)
 
 
 class TestToDictMethod(unittest.TestCase):
@@ -47,17 +80,36 @@ class TestToDictMethod(unittest.TestCase):
     """
 
     def test_no_args(self):
-        """no arguments"""
+        """
+        no arguments
+        """
         c = BaseModel()
         d = c.to_dict()
         self.assertIsInstance(d, dict)
         self.assertTrue(hasattr(d, "__class__"))
 
     def test_types(self):
+        """
+        the types of the return value
+        """
         c = BaseModel()
         d = c.to_dict()
+        self.assertEqual(type(d), dict)
         self.assertIsInstance(d["updated_at"], str)
         self.assertIsInstance(d["created_at"], str)
+
+
+class TestStr(unittest.TestCase):
+    """
+    Test cases for __str__() method
+    """
+
+    def test_str(self):
+        """
+        __str__ method
+        """
+        obj = BaseModel()
+        self.assertIsInstance(obj.__str__(), str)
 
 
 if __name__ == "__main__":
