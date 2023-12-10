@@ -25,7 +25,8 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    __my_models = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
+    __my_models = ["BaseModel", "User", \
+            "State", "City", "Amenity", "Place", "Review"]
     __missing_class_name = "** class name missing **"
     __wrong_class = "** class doesn't exist **"
     __no_instance = "** no instance found **"
