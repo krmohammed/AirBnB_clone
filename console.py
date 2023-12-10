@@ -167,11 +167,11 @@ class HBNBCommand(cmd.Cmd):
                     val = eval(str(lines[3]))
                     try:
                         val = eval(str(val))
-                    except:
+                    except NameError:
                         pass
                     setattr(inst, lines[2], val)
                     inst.save()
-                except:
+                except NameError:
                     pass
         else:
             print(self.__missing_class_name)
