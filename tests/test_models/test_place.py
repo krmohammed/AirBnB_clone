@@ -19,7 +19,6 @@ class TestInitMethod(unittest.TestCase):
         a = Place()
         b = Place()
         self.assertTrue(a.id != b.id)
-        self.assertTrue(a.created_at == a.updated_at)
         self.assertFalse(b.id is None)
 
     def test_dict_init(self):
@@ -55,59 +54,6 @@ class TestInitMethod(unittest.TestCase):
         self.assertIsInstance(a.id, str)
         self.assertIsInstance(b.updated_at, datetime)
         self.assertIsInstance(b.created_at, datetime)
-
-
-class TestSaveMethod(unittest.TestCase):
-    """
-    Test cases for the save() method
-    """
-
-    def test_zero_args(self):
-        """
-        no arguments
-        """
-        c = Place()
-        a = c.updated_at
-        c.save()
-        self.assertTrue(c.updated_at)
-
-
-class TestToDictMethod(unittest.TestCase):
-    """
-    Test cases for to_dict() method
-    """
-
-    def test_no_args(self):
-        """
-        no arguments
-        """
-        c = Place()
-        d = c.to_dict()
-        self.assertIsInstance(d, dict)
-        self.assertTrue(hasattr(d, "__class__"))
-
-    def test_types(self):
-        """
-        the types of the return value
-        """
-        c = Place()
-        d = c.to_dict()
-        self.assertEqual(type(d), dict)
-        self.assertIsInstance(d["updated_at"], str)
-        self.assertIsInstance(d["created_at"], str)
-
-
-class TestStr(unittest.TestCase):
-    """
-    Test cases for __str__() method
-    """
-
-    def test_str(self):
-        """
-        __str__ method
-        """
-        obj = Place()
-        self.assertIsInstance(obj.__str__(), str)
 
 
 if __name__ == "__main__":

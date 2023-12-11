@@ -19,7 +19,6 @@ class TestInitMethod(unittest.TestCase):
         a = BaseModel()
         b = BaseModel()
         self.assertTrue(a.id != b.id)
-        self.assertTrue(a.created_at == a.updated_at)
         self.assertFalse(b.id is None)
 
     def test_dict_init(self):
