@@ -152,19 +152,20 @@ class HBNBCommand(cmd.Cmd):
                     print(self.__wrong_class)
                 else:
                     print(self.__no_id)
-                return
-            if len(lines) == 2:
+            elif len(lines) == 2:
                 key = f"{lines[0]}.{lines[1]}"
                 if key not in storage.all().keys():
                     print(self.__no_instance)
                 else:
                     print("** attribute name missing **")
-                return
-            if len(lines) == 3:
+            elif len(lines) == 3:
                 print("** value missing **")
             else:
                 key = f"{lines[0]}.{lines[1]}"
                 classes = storage.all()
+                if key not in storage.all().keys():
+                    print(self.__no_instance)
+                    return
                 obj = classes[key]
                 inst = obj
                 try:
